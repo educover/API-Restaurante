@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+let LoginController = require('../controllers/loginController');
+
 /* GET home page. */
 router.post('/', function(req, res, next) {
-  console.log('hola')
+  let loginController = new LoginController(req, res, next);
+  loginController.login();
 });
 
 module.exports = router;
