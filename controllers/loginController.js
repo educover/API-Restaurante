@@ -10,10 +10,8 @@ class LoginController extends Controller{
         let user = this.req.body.user;
         let pass = this.req.body.pass;
         let loginModel = new LoginModel();
-        loginModel.findUserDB(user, (info)=>{
-            if(info[0].pass === pass){
-                console.log('login correcto')
-            }
+        loginModel.findUserDB(user, pass, (info)=>{
+            console.log(info)
         })
     }
 
