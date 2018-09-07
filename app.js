@@ -9,7 +9,16 @@ var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var loginRouter = require('./routes/login');
 
+var ExpressSession = require('express-session');
+
 var app = express();
+
+app.use(ExpressSession({
+  secret:'ApiRestaurante',
+  name:'SesionAdmin',
+  resave:true,
+  saveUninitialized:true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

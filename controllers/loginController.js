@@ -11,7 +11,12 @@ class LoginController extends Controller{
         let pass = this.req.body.pass;
         let loginModel = new LoginModel();
         loginModel.findUserDB(user, pass, (info)=>{
-            console.log(info)
+            if(info.length===0){
+                this.res.json('datos incorrectos')
+            } else {
+                this.req.session.admin = user;
+                this.res.redirect('/admin')
+            }
         })
     }
 
